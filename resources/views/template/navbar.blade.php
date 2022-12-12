@@ -17,14 +17,14 @@
           </div>
           <div>
               <li class="nav-item">
-                <a class="nav-link active" style="font-family: 'Inter', sans-serif;" href="#">CATEGORIES</a>
+                <a class="nav-link" style="font-family: 'Inter', sans-serif;" href="#">CATEGORIES</a>
               </li>
           </div>
           <div style="border-right: 2px solid black; height: 20px">
           </div>
           <div>
               <li class="nav-item">
-                <a class="nav-link active" style="font-family: 'Inter', sans-serif;" href="#">ABOUT US</a>
+                <a class="nav-link" style="font-family: 'Inter', sans-serif;" href="#">ABOUT US</a>
               </li>
           </div>
         </ul>
