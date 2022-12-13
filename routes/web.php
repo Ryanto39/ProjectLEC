@@ -17,6 +17,15 @@ Route::get('/', function () {
     return view('main.home');
 });
 
-Route::get('/about', function(){
-    return view('main.aboutus');
+// Route::get('/about', function(){
+//     return view('main.aboutus');
+// });
+
+Route::get('/categories', function(){
+    return view('main.categories');
 });
+
+Route::get('/job', function(){
+    return view('main.job');
+});
+
