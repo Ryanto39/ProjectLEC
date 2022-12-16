@@ -59,6 +59,7 @@ class JobController extends Controller
      */
     public function edit($id)
     {
+        // return view('main.home');
         $job = Job::findOrFail($id);
         return view('main.edit', ['editView' => $job]);
     }
@@ -70,8 +71,9 @@ class JobController extends Controller
      * @param  \App\Models\Job  $job
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Job $job)
+    public function update(Request $request, $id)
     {
+        $job = Job::find($id);
         $this->validate($request, [
             'job_image' => 'image|mimes:jpeg,png,jpg|max:2048',
             'job_name' => 'required',
@@ -79,27 +81,32 @@ class JobController extends Controller
             'job_price' => 'required'
         ]);
 
-        if ($request->hasFile('job_image')) {
-            $image = $request->file('job_image');
-            $image->storeAs('public/asset', $image->hashName());
-            Storage::delete('public/asset/'.$job->image);
-            $job->update([
-                'job_image' => $request->job_image,
-                'job_name' => $request->job_name,
-                'job_description' => $request->job_description,
-                'job_price' => $request->job_price
-            ]);
-        }
+        // if ($request->hasFile('job_image')) {
+            // $image = $request->file('job_image');
+            // $image->storeAs('public/asset', $image->hashName());
+            // Storage::delete('public/asset/'.$job->image);
+            $job->job_name = $request->job_name;
+            $job->job_description = $request->job_description;
+            $job->job_price = $request->job_price;
+            $job->job_image = $request->job_image;
+            $job->save();
+        //     $job->update([
+        //         'job_image' => $request->job_image,
+        //         'job_name' => $request->job_name,
+        //         'job_description' => $request->job_description,
+        //         'job_price' => $request->job_price
+        //     ]);
+        // }
 
-        else {
-            $job->update([
-                'job_name' => $request->job_name,
-                'job_description' => $request->job_description,
-                'job_price' => $request->job_price
-            ]);
-        }
+        // else {
+        //     $job->update([
+        //         'job_name' => $request->job_name,
+        //         'job_description' => $request->job_description,
+        //         'job_price' => $request->job_price
+        //     ]);
+        // }
 
-        return view("main.view{{$job->id}}");
+        return view("main.home");
     }
 
     /**

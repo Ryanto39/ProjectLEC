@@ -37,4 +37,4 @@ Route::get('/category/{id}',[CategoryController::class, 'index']);
 Route::get('/view/{id}',[JobController::class, 'index']);
 
 Route::get('/edit/{id}',[JobController::class, 'edit']);
-Route::post('/editConfirm',[JobController::class, 'update']);
+Route::post('/editConfirm/{id}',[JobController::class, 'update']);

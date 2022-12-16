@@ -5,9 +5,9 @@
 @section('content')
 <div class="d-flex" style="padding: 0 20px 50px 35px">
     <div class="d-flex flex-column ms-3">
-        <form action="/editConfirm" method="POST" enctype="multipart/form-data">
+        <form action="/editConfirm/{{$editView->id}}" method="POST" enctype="multipart/form-data">
             @csrf
-            @method('PUT')
+            {{-- @method('PUT') --}}
             <div>
                 <div class="" style="margin-top: 10px; margin-right:20px; border-bottom: 2px solid black; text-shadow: 0px 4px 4px #777777;">
                     <h2 class="fw-bold">Update Data</h2>
@@ -56,7 +56,7 @@
                     <a class="btn btn-dark fw-bold" style="background-color: #008BD9; margin-top:10px; text-color: white" href="#" role="button">Update</a>
                     <a class="btn btn-dark fw-bold" style="background-color: #FF4343; margin-top:10px; text-color: white" href="#" role="button">Delete</a>
                 </div> --}}
-                <a class="btn btn-dark fw-bold" style="background-color: #008BD9; margin-top:10px; text-color: white" href="/editConfirm" role="button">Update</a>
+                <button type="submit" class="btn btn-primary mb-3">Update</button>
             </div>
         </form>
     </div>
