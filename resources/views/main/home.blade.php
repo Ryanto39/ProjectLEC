@@ -50,27 +50,27 @@
             </div>
         </div>
     </div>
-    <div class="w-100 d-flex" style="display: flex; background-color: #B0D133; width: 100vw; height: 100vh; flex-direction: column; " id="categ">
+    <div id="categs" class="w-100 d-flex" style="display: flex; background-color: #B0D133; width: 100vw; height: 100vh; flex-direction: column; " id="categ">
         <div class="fs-1 fst-italic d-flex justify-content-center" style="padding: 5px; width: 100%; color: white; font-family: 'Inter', sans-serif; text-shadow: 2px 2px 4px #000000;">
             <p style="font-size: 60px">CATEGORIES</p>
         </div>
         <div class="allcate">
             <div class="d-flex">
                 <div class="webdev" style="display: flex; flex-direction: row; justify-content: space-evenly; align-items: center; width: 100%">
-                    <a class="categ" href="">
+                    <a class="categ" href="/category/{{1}}">
                         <img class="border border-2 border-dark" style="height: 70vh; border-radius: 20px; border-color: black" src="/asset/WebDeveloping.png" alt="">
                     </a>
-                    <a class="categ" href="">
+                    <a class="categ" href="/category/{{2}}">
                         <img class="border border-2 border-dark" style="height: 70vh; border-radius: 20px; border-color: black" src="/asset/AppDeveloping.png" alt="">
                     </a>
-                    <a class="categ" href="">
+                    <a class="categ" href="/category/{{3}}">
                         <img class="border border-2 border-dark" style="height: 70vh; border-radius: 20px; border-color: black" src="/asset/ServerDeveloping.png" alt="">
                     </a>
                 </div>
             </div>
         </div>
     </div>
-    <div class="d-flex align-items-center flex-column justify-content-between" style="background-image: url(/asset/AboutUs.png); width: auto; height: 100vh; background-repeat: no-repeat; background-size: cover;" id="abouts">
+    <div id="abouts" class="d-flex align-items-center flex-column justify-content-between" style="background-image: url(/asset/AboutUs.png); width: auto; height: 100vh; background-repeat: no-repeat; background-size: cover;" id="abouts">
         <div class="fs-1 fst-italic d-flex justify-content-center" style="padding: 5px; width: 100%; color: #B0D133; font-family: 'Inter', sans-serif; text-shadow: 2px 2px 4px #ffffff; margin-top: 40px;">
             <p style="font-size: 60px">ABOUT US</p>
         </div>

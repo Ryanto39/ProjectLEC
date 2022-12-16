@@ -45,6 +45,6 @@
         </div>
       </div>
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-        <p>© 2022 Copyright: DoneIT.com 🗿</p>
+        <p>© 2022 DoneIT, Inc. All rights reserved.</p>
     </div>
 </footer>

@@ -19,7 +19,7 @@
                             our professional IT services team to people or businesses looking to hire (buyers).
                             Listings on DoneIT are diverse and range from "make Database using FireBase" to
                             "help with HTML, JavaScript, CSS, and jQuery". DoneIT was founded in 2022 by 5
-                            students named Jovan, Ryan, Bintang, Daniel and Rafi. </p>
+                            students named Jovan, Ryan, Bintang, Daniel, and Rafi. </p>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\JobController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +32,9 @@ Route::get('/job', function(){
     return view('main.job');
 });
 
+Route::get('/category/{id}',[CategoryController::class, 'index']);
+
+Route::get('/view/{id}',[JobController::class, 'index']);
+
+Route::get('/edit/{id}',[JobController::class, 'edit']);
+Route::post('/editConfirm',[JobController::class, 'update']);
