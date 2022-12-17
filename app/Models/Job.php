@@ -9,6 +9,7 @@ class Job extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $fillable = ['job_name','job_description','job_image','job_price'];
     public function category(){
         return $this->belongsTo(Category::class);
     }

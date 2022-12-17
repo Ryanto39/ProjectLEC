@@ -74,22 +74,33 @@ class JobController extends Controller
     public function update(Request $request, $id)
     {
         $job = Job::find($id);
-        $this->validate($request, [
-            'job_image' => 'image|mimes:jpeg,png,jpg|max:2048',
+        $data = request()->validate([
+            'job_image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'job_name' => 'required',
             'job_description' => 'required',
             'job_price' => 'required'
         ]);
 
+        $updateData = [
+            'job_name' => $data['job_name'],
+            'job_description' => $data['job_description'],
+            'job_price' => $data['job_price']
+        ];
+        if(request('job_image')){
+            $images = $request->job_image->getClientOriginalName();
+            $file = request('job_image')->move('asset', $images);
+            $updateData['job_image'] = $file;
+        }
+        $job->update($updateData);
         // if ($request->hasFile('job_image')) {
             // $image = $request->file('job_image');
             // $image->storeAs('public/asset', $image->hashName());
             // Storage::delete('public/asset/'.$job->image);
-            $job->job_name = $request->job_name;
-            $job->job_description = $request->job_description;
-            $job->job_price = $request->job_price;
-            $job->job_image = $request->job_image;
-            $job->save();
+            // $job->job_name = $request->job_name;
+            // $job->job_description = $request->job_description;
+            // $job->job_price = $request->job_price;
+            // $job->job_image = $request->job_image;
+            // $job->save();
         //     $job->update([
         //         'job_image' => $request->job_image,
         //         'job_name' => $request->job_name,
@@ -115,8 +126,9 @@ class JobController extends Controller
      * @param  \App\Models\Job  $job
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Job $job)
+    public function destroy($id)
     {
-        //
+        Job::where('id', '=', $id)->delete();
+        return view("main.home");
     }
 }

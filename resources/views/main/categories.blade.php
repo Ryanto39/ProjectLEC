@@ -23,7 +23,7 @@
     <div class="container p-3">
         @foreach ($categoryData->job as $job)
         <div class="card" style="width: 18rem;">
-            <img src="/asset/{{$job->job_image}}" class="card-img-top" alt="...">
+            <img src="/{{$job->job_image}}" class="card-img-top" alt="...">
             <div class="card-body">
                 <div class="d-flex flex-column">
                     <h5 class="card-title fw-bold">{{$job->job_name}}</h5>

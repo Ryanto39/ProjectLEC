@@ -28,6 +28,10 @@ Route::get('/categories', function(){
     return view('main.categories');
 });
 
+Route::get('/asd', function(){
+    return view('main.job2');
+});
+
 Route::get('/job', function(){
     return view('main.job');
 });
@@ -38,3 +42,6 @@ Route::get('/view/{id}',[JobController::class, 'index']);
 
 Route::get('/edit/{id}',[JobController::class, 'edit']);
 Route::post('/editConfirm/{id}',[JobController::class, 'update']);
+
+Route::get('/destroy/{id}',[JobController::class, 'destroy']);
+

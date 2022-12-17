@@ -56,8 +56,7 @@
             </div>
         </div>
         <div class="w-75 d-flex justify-content-evenly">
-            <a class="btn btn-dark fw-bold" style="background-color: #008BD9; margin-top:10px; text-color: white" href="/edit/{{$jobView->id}}" role="button">Update</a>
-            <a class="btn btn-dark fw-bold" style="background-color: #FF4343; margin-top:10px; text-color: white" href="/destroy/{{$jobView->id}}" role="button">Delete</a>
+            <a class="btn btn-dark fw-bold" style="background-color: #008BD9; margin-top:10px; text-color: white" href="" role="button">Hire Now</a>
         </div>
     </div>
 

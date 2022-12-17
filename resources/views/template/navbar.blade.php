@@ -10,21 +10,21 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-center d-flex justify-content-evenly w-50">
           <div>
               <li class="nav-item">
-                <a class="nav-link active" style="font-family: 'Inter', sans-serif;" aria-current="page" href="#">HOME</a>
+                <a class="nav-link active" style="font-family: 'Inter', sans-serif;" aria-current="page" href="/">HOME</a>
               </li>
           </div>
           <div style="border-right: 2px solid black; height: 20px">
           </div>
           <div>
               <li class="nav-item">
-                <a class="nav-link" style="font-family: 'Inter', sans-serif;" href="#categs">CATEGORIES</a>
+                <a class="nav-link" style="font-family: 'Inter', sans-serif;" href="/#categs">CATEGORIES</a>
               </li>
           </div>
           <div style="border-right: 2px solid black; height: 20px">
           </div>
-          <div>
+          <div></div>
               <li class="nav-item">
-                <a class="nav-link" style="font-family: 'Inter', sans-serif;" href="#abouts">ABOUT US</a>
+                <a class="nav-link" style="font-family: 'Inter', sans-serif;" href="/#abouts">ABOUT US</a>
               </li>
           </div>
         </ul>
