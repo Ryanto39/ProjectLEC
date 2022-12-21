@@ -14,6 +14,7 @@
 </style>
 
 @section('title', 'Home')
+@section('nav_home', 'Nav')
 
 @section('content')
     <div class="d-flex justify-content-end" style="background-image: url(/asset/Home.png); width: 100%; height: 100vh; background-repeat: no-repeat; background-size: cover; border-top: 15px solid #B0D133;">
@@ -22,7 +23,7 @@
                 <p>FIND WHAT <em class="fst-normal" style="color:#B0D133; font-family: 'Inknut Antiqua', serif;">SERVICES</em> YOU NEED TO BE DONE <em style="margin-right: 170px">BY</em> </p><img style="position: absolute; width: 150px; right: 100px; top: 285px;" src="/asset/DoneIT.png" alt="">
             </div>
             <form class="d-flex justify-content-center mt-5">
-                <input class="rounded-start p-2 w-100" style="font-family: 'Inter', sans-serif;" type="search" placeholder="What IT service you looking for?" aria-label="Search">
+                <input class="rounded-start p-2 w-100" style="font-family: 'Inter', sans-serif;" type="search" placeholder="What IT service are you looking for?" aria-label="Search">
                 <button class="rounded-end p-2" style="background-color: #B0D133;" type="submit">
                     <img src="/asset/Search.png" width="25px" height="25px" alt="">
                 </button>
@@ -33,7 +34,7 @@
                 </div>
                 <div class="boxes d-flex">
                     <div class="boxs d-flex align-items-center justify-content-center" style="margin-left: 15px; background: rgb(144, 144, 144); border-radius: 30px">
-                        <p class="ps-2 pe-2" style="margin: 0; color: #0066A6">IOS app developing</p>
+                        <p class="ps-2 pe-2" style="margin: 0; color: #0066A6">iOS app developing</p>
                     </div>
                     <div class="boxs d-flex align-items-center justify-content-center" style="margin-left: 15px; background: rgb(144, 144, 144); border-radius: 30px">
                         <p class="ps-2 pe-2" style="margin: 0; color: #0066A6">NodeJS server developing</p>

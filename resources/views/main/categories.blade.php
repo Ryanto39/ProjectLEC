@@ -1,6 +1,7 @@
 @extends('template.master')
 
 @section('title', 'Categories')
+@section('nav_categories', 'Nav')
 
 @section('content')
 <div class="d-flex w-50 justify-content-evenly align-items-center">

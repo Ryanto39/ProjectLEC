@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -16,6 +18,36 @@ class UserController extends Controller
     {
         // $userData = User::all();
         // return view('main/user', ['userData' => $userData]);
+    }
+
+    public function login(Request $request){
+        $credential = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|min:4|max:20'
+        ]);
+
+        if(!Auth::attempt($credential)){
+            return redirect()->back()->withErrors('Invalid Credential!');
+        }
+
+        return redirect('/home');
+    }
+
+    public function register(Request $request){
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|min:8|max:20',
+            'confirm' => 'required|same:password',
+            'terms' => 'required'
+        ]);
+
+        $newUser = new User();
+        $newUser->email = $request->input('email');
+        $newUser->password = Hash::make($request->input('password'));
+        $newUser->role = 'Member';
+        $newUser->save();
+
+        return redirect()->route('main.login');
     }
 
     /**

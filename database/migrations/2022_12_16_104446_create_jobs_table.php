@@ -21,6 +21,7 @@ class CreateJobsTable extends Migration
             $table->string('job_description');
             $table->string('job_image');
             $table->string('job_price');
+            $table->string('job_teamCount');
 
             $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');

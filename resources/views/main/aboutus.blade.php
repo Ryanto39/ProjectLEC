@@ -1,6 +1,7 @@
 @extends('template.master')
 
 @section('title', 'About Us')
+@section('nav_aboutus', 'Nav')
 
 @section('content')
     <div class="d-flex align-items-center justify-content-center" style="background-image: url(/asset/AboutUs.png); width: 100vw; height: 100vh; background-repeat: no-repeat; background-size: cover;">

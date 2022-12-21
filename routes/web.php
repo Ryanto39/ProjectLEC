@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -35,6 +36,22 @@ Route::get('/asd', function(){
 Route::get('/job', function(){
     return view('main.job');
 });
+
+Route::get('/loginForm',function(){
+    return view('main.login');
+});
+
+Route::post('/login',[UserController::class,'login'])->name('login');
+
+// Route::post('/login',function(){
+//     return view('main.login');
+// });
+
+Route::get('/register', [UserController::class,'register'])->name('register');
+
+// Route::post('/register',function(){
+//     return view('main.register');
+// });
 
 Route::get('/category/{id}',[CategoryController::class, 'index']);
 
