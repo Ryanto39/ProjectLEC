@@ -21,7 +21,8 @@ class JobSeeder extends Seeder
             'job_description' => 'Web design ecompasses many different skills and disciplines in the production and maintenance of websites.',
             'job_image' => 'asset/WebDesign.png',
             'job_price' => '200',
-            'job_teamCount' => '5'
+            'job_teamCount' => '5',
+            'job_status' => 'unoccupied'
         ]);
     }
 }

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Job;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class JobController extends Controller
@@ -17,38 +19,6 @@ class JobController extends Controller
     {
         $jobView = Job::findorFail($jobId);
         return view('main.job', ['jobView' => $jobView]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Job  $job
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Job $job)
-    {
-        //
     }
 
     /**
@@ -132,5 +102,40 @@ class JobController extends Controller
     {
         Job::where('id', '=', $id)->delete();
         return view("main.home");
+    }
+
+    public function hired($id){
+        $job = Job::find($id);
+        $job->job_status = 'occupied';
+        $job->save();
+        return view('main.hired');
+    }
+
+    public function index_request(){
+        return view('main.request');
+    }
+
+    public function request(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'teamCount' => 'required',
+            'category' => 'required',
+            'jobImage' => 'required',
+            'terms' => 'required'
+        ]);
+        $newJob = new Job();
+        $newJob->job_name = $request->input('name');
+        $newJob->user_id = Auth::user()->id;
+        $newJob->category_id = $request->input('category');
+        $newJob->job_description = $request->input('description');
+        $newJob->job_price = $request->input('price');
+        $newJob->job_teamCount = $request->input('teamCount');
+        $newJob->job_image = $request->input('jobImage');
+        $newJob->job_status = 'unapproved';
+        $newJob->save();
+
+        return redirect('/');
     }
 }

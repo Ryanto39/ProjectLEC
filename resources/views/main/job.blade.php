@@ -57,7 +57,7 @@
         </div>
         @if(!Auth::check() || Auth::user()->user_role == 'Member')
         <div class="d-flex justify-content-evenly" style="width: 700px">
-            <a class="btn btn-dark fw-bold" style="background-color: #008BD9; margin-top:10px; text-color: white" href="" role="button">Hire Now</a>
+            <a class="btn btn-dark fw-bold" style="background-color: #008BD9; margin-top:10px; text-color: white" href="/hired/{{$jobView->id}}" role="button">Hire Now</a>
         </div>
         @elseif (Auth::user()->user_role == 'Admin')
         <div class="w-75 d-flex justify-content-evenly">

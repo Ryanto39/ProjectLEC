@@ -41,6 +41,16 @@ Route::get('/categories', function(){
 //     return view('main.login');
 // });
 
+Route::get('/approve', function(){
+    return view('main.approve');
+});
+
+Route::get('/request', [JobController::class,'index_request'])->name('index_request');
+
+Route::post('/request', [JobController::class, 'request'])->name('request');
+
+Route::get('/hired/{id}', [JobController::class,'hired'])->name('hired')->middleware('hireMiddleware');
+
 Route::get('/login', [UserController::class,'index_login'])->name('index_login')->middleware('authenticateMiddleware');
 
 Route::get('/register', [UserController::class,'index_register'])->name('index_register')->middleware('authenticateMiddleware');
