@@ -3,18 +3,20 @@
 @section('title', 'Categories')
 
 @section('content')
-<div class="d-flex w-50 justify-content-evenly align-items-center">
-    <div class="text-wrap fs-1 fst-italic" style="color: #0066A6; font-family: 'Inter', sans-serif; text-shadow: 2px 2px 4px #000000;">
-        <p class="m-0">{{$jobView->category->category_name}}</p>
+<div class="d-flex align-items-center w-100">
+    <div class="d-flex justify-content-end align-items-center" style="width: 75vw">
+        <div class="text-wrap fs-1 fst-italic" style="color: #0066A6; font-family: 'Inter', sans-serif; text-shadow: 2px 2px 4px #000000;">
+            <p class="m-0 text-uppercase">CATEGORIES</p>
+        </div>
     </div>
-    <div class="dropdown">
+    <div class="dropdown me-5 w-50 d-flex justify-content-end">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          Change Category
+            {{$categoryData->category_name}}
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             <?php $categories = DB::table('categories')->get(); ?>
             @foreach ($categories as $category)
-            <li><a class="dropdown-item" href="/category/{{$category->id}}">{{$category->category_name}}</a></li>
+                <li><a class="dropdown-item" href="/category/{{$category->id}}">{{$category->category_name}}</a></li>
             @endforeach
         </ul>
     </div>

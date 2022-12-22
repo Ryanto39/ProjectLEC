@@ -5,11 +5,11 @@
 @section('content')
 <div class="d-flex w-50 justify-content-evenly align-items-center">
     <div class="text-wrap fs-1 fst-italic" style="color: #0066A6; font-family: 'Inter', sans-serif; text-shadow: 2px 2px 4px #000000;">
-        <p class="m-0">{{$jobView->category->category_name}}</p>
+        <p class="m-0">SERVICE</p>
     </div>
     <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          Change Category
+            {{$jobView->category->category_name}}
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             <?php $categories = DB::table('categories')->get(); ?>
@@ -55,10 +55,16 @@
                 <h5 class="m-0 ms-2">Team Counts</h5> <hr style="color:#000000; width: 80px; margin: 0 20px"> <h5 class="fw-bold fst-italic m-0" style="color: #777777; text-shadow: 1px 2px 5px #777777;">6</h5>
             </div>
         </div>
+        @if(!Auth::check() || Auth::user()->user_role == 'Member')
+        <div class="d-flex justify-content-evenly" style="width: 700px">
+            <a class="btn btn-dark fw-bold" style="background-color: #008BD9; margin-top:10px; text-color: white" href="" role="button">Hire Now</a>
+        </div>
+        @elseif (Auth::user()->user_role == 'Admin')
         <div class="w-75 d-flex justify-content-evenly">
             <a class="btn btn-dark fw-bold" style="background-color: #008BD9; margin-top:10px; text-color: white" href="/edit/{{$jobView->id}}" role="button">Update</a>
             <a class="btn btn-dark fw-bold" style="background-color: #FF4343; margin-top:10px; text-color: white" href="/destroy/{{$jobView->id}}" role="button">Delete</a>
         </div>
+        @endif
     </div>
 
 </div>

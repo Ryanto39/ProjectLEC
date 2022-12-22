@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('main.home');
-});
+})->name('/');
 
 // Route::get('/about', function(){
 //     return view('main.aboutus');
@@ -29,29 +29,27 @@ Route::get('/categories', function(){
     return view('main.categories');
 });
 
-Route::get('/asd', function(){
-    return view('main.job2');
-});
+// Route::get('/jobUser', function(){
+//     return view('main.jobUser');
+// })->name('jobUser');
 
-Route::get('/job', function(){
-    return view('main.job');
-});
+// Route::get('/jobAdmin', function(){
+//     return view('main.jobAdmin');
+// })->name('jobAdmin');
 
-Route::get('/loginForm',function(){
-    return view('main.login');
-});
-
-Route::post('/login',[UserController::class,'login'])->name('login');
-
-// Route::post('/login',function(){
+// Route::get('/loginForm',function(){
 //     return view('main.login');
 // });
 
-Route::get('/register', [UserController::class,'register'])->name('register');
+Route::get('/login', [UserController::class,'index_login'])->name('index_login')->middleware('authenticateMiddleware');
 
-// Route::post('/register',function(){
-//     return view('main.register');
-// });
+Route::get('/register', [UserController::class,'index_register'])->name('index_register')->middleware('authenticateMiddleware');
+
+Route::post('/login',[UserController::class,'login'])->name('login');
+
+Route::post('/logout',[UserController::class,'logout'])->name('logout');
+
+Route::post('/register', [UserController::class,'register'])->name('register');
 
 Route::get('/category/{id}',[CategoryController::class, 'index']);
 
@@ -62,3 +60,4 @@ Route::post('/editConfirm/{id}',[JobController::class, 'update']);
 
 Route::get('/destroy/{id}',[JobController::class, 'destroy']);
 
+Route::post('logout',[UserController::class,'logout'])->name('logout');

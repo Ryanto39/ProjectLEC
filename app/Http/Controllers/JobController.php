@@ -116,8 +116,10 @@ class JobController extends Controller
         //         'job_price' => $request->job_price
         //     ]);
         // }
+        // return redirect()->route('/view/');
+        return redirect('view/'.$id);
 
-        return view("main.home");
+        // return view("main.home");
     }
 
     /**

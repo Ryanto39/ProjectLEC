@@ -19,7 +19,7 @@ class JobSeeder extends Seeder
             'user_id' => '3',
             'job_name' => 'Web Design',
             'job_description' => 'Web design ecompasses many different skills and disciplines in the production and maintenance of websites.',
-            'job_image' => 'WebDesign.png',
+            'job_image' => 'asset/WebDesign.png',
             'job_price' => '200',
             'job_teamCount' => '5'
         ]);

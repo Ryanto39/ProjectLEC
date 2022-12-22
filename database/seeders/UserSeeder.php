@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -16,33 +17,33 @@ class UserSeeder extends Seeder
     {
         User::insert([
             'user_name' => 'Jovan',
-            'user_email' => 'jovan@email.com',
-            'user_password' => 'jovan1',
+            'email' => 'jovan@email.com',
+            'password' => Hash::make('jovanasd'),
             'user_role' => 'Member'
         ]);
         User::insert([
             'user_name' => 'Daniel',
-            'user_email' => 'daniel@email.com',
-            'user_password' => 'daniel1',
-            'user_role' => 'Member'
+            'email' => 'daniel@email.com',
+            'password' => Hash::make('danielasd'),
+            'user_role' => 'Tank'
         ]);
         User::insert([
             'user_name' => 'Ryan',
-            'user_email' => 'ryan@email.com',
-            'user_password' => 'ryan1',
-            'user_role' => 'Member'
+            'email' => 'ryan@email.com',
+            'password' => Hash::make('ryantoasd'),
+            'user_role' => 'Admin'
         ]);
         User::insert([
             'user_name' => 'Rafi',
-            'user_email' => 'bintang@email.com',
-            'user_password' => 'rafi1',
-            'user_role' => 'Member'
+            'email' => 'rafi@email.com',
+            'password' => Hash::make('rafiasdasd'),
+            'user_role' => 'Mage'
         ]);
         User::insert([
             'user_name' => 'Bintang',
-            'user_email' => 'bintang@email.com',
-            'user_password' => 'bintang1',
-            'user_role' => 'Member'
+            'email' => 'bintang@email.com',
+            'password' => ('bintangasd'),
+            'user_role' => 'Roam'
         ]);
     }
 }

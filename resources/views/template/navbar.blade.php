@@ -40,12 +40,22 @@
               </li>
           </div>
         </ul>
-        <form class="d-flex me-4">
-          <input class="rounded-start" style="font-family: 'Inter', sans-serif;" type="search" placeholder="What IT service are you looking for?" aria-label="Search">
-          <button class="rounded-end p-2" style="background-color: #B0D133" type="submit">
-            <img src="/asset/Search.png" width="25px" height="25px" alt="">
-          </button>
-        </form>
-      </div>
+        <div class="d-flex align-items-center justify-content-center me-4">
+            @if (Auth::check())
+            <div class="">
+                <p class="m-0" style="width: 150px">Welcome, {{Auth::user()->user_name}}</p>
+            </div>
+            <form action="{{ route('logout') }}" method="POST" class="m-0">
+                @csrf
+                <button type="submit" class="btn btn-danger">Logout</button>
+            </form>
+        </div>
+        @else
+            <a href="{{ route('login') }}">
+                <button type="submit" class="btn btn-success">Login</button>
+            </a>
+        </div>
+        @endif
+    </div>
     </div>
   </nav>

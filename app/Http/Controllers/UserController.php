@@ -23,18 +23,32 @@ class UserController extends Controller
     public function login(Request $request){
         $credential = $request->validate([
             'email' => 'required|email',
-            'password' => 'required|min:4|max:20'
+            'password' => 'required|min:8|max:20'
         ]);
-
+        // $email = $request->input('email');
+        // $password = $request->input('password');
         if(!Auth::attempt($credential)){
             return redirect()->back()->withErrors('Invalid Credential!');
         }
 
-        return redirect('/home');
+        // if(!Auth::attempt(['user_email' => $email, 'user_password' => $password])){
+        //     return redirect()->back()->withErrors('Invalid Credential!');
+        // }
+
+        return redirect()->route('/');
+    }
+
+    public function index_register(){
+        return view('main.register');
+    }
+
+    public function index_login(){
+        return view('main.login');
     }
 
     public function register(Request $request){
-        $request->validate([
+        $credential = $request->validate([
+            'username' => 'required',
             'email' => 'required|email',
             'password' => 'required|min:8|max:20',
             'confirm' => 'required|same:password',
@@ -42,77 +56,17 @@ class UserController extends Controller
         ]);
 
         $newUser = new User();
+        $newUser->user_name = $request->input('username');
         $newUser->email = $request->input('email');
         $newUser->password = Hash::make($request->input('password'));
-        $newUser->role = 'Member';
+        $newUser->user_role = 'Member';
         $newUser->save();
 
-        return redirect()->route('main.login');
+        return redirect()->route('login');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function show(User $user)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(User $user)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, User $user)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(User $user)
-    {
-        //
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('login');
     }
 }
