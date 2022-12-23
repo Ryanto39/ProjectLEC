@@ -4,38 +4,38 @@
 
 @section('content')
 <div class="d-flex justify-content-center align-items-center">
-    <div class="container w-50 pt-5 pb-5" >
+    <div class="container w-100 pt-5 pb-5" >
         <div class="bg-light p-5 rounded mt-3 mb-3">
             <h1 class="mb-3 text-center">Job Approval List</h1>
             <table class="table">
                 <thead>
                     <tr>
-                    <th scope="col">Job Image</th>
-                    <th scope="col">Job Name</th>
-                    <th scope="col">User Name</th>
-                    <th scope="col">Job Description</th>
-                    <th scope="col">Job Price</th>
-                    <th scope="col">Job Team Count</th>
+                        <th scope="col">Job Image</th>
+                        <th scope="col">Job Name</th>
+                        <th scope="col">User Name</th>
+                        <th scope="col">Job Description</th>
+                        <th scope="col">Job Price</th>
+                        <th scope="col">Job Team Count</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($jobs as $job)
                     <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                        <th scope="row">
+                            <img src="/{{$job->job_image}}" style="max-width: 150px" alt="">
+                        </th>
+                        <td>{{$job->job_name}}</td>
+                        <td>{{$job->user->user_name}}</td>
+                        <td>{{$job->job_description}}</td>
+                        <td>{{$job->job_price}}</td>
+                        <td>{{$job->job_teamCount}}</td>
+                        <td>
+                            <a class="btn btn-success" href="/jobApproved/{{$job->id}}" role="button">Approve</a>
+                            <a class="btn btn-danger" href="jobDecline/{{$job->id}}" role="button">Decline</a>
+                        </td>
                     </tr>
-                    <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    </tr>
-                    <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

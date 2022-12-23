@@ -7,7 +7,7 @@
     <div class="container w-50 pt-5 pb-5" style="">
         <div class="bg-light p-5 rounded mt-3 mb-3">
             <h1 class="mb-3 text-center">Request Job</h1>
-            <form action="{{ route('request') }}" method="POST">
+            <form action="{{ route('request') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="name" class="form-label">Job Name</label>
@@ -36,8 +36,8 @@
                     <input type="text" class="form-control" id="teamCount" name="teamCount">
                 </div>
                 <div class="mb-3 d-flex flex-column">
-                    <label for="jobImage" class="form-label">Job Image</label>
-                    <input type="file" class ="form-control" id="jobImage" name="jobImage">
+                    <label for="job_image" class="form-label">Job Image</label>
+                    <input type="file" class ="form-control" id="job_image" name="job_image">
                 </div>
                 <div class="mb-2 form-check d-flex justify-content-start gap-2">
                     <input class="form-check-input" type="checkbox" name="terms" value="0" id="terms">

@@ -3,6 +3,21 @@
 @section('title', 'Categories')
 
 @section('content')
+
+<style>
+
+.btn-primary:hover{
+    background-color: #0d6efd !important;
+    color: white !important;
+}
+
+.btn-dark:hover{
+    background-color: #d13a3a !important;
+    color: white !important;
+}
+
+</style>
+
 <div class="d-flex w-50 justify-content-evenly align-items-center">
     <div class="text-wrap fs-1 fst-italic" style="color: #0066A6; font-family: 'Inter', sans-serif; text-shadow: 2px 2px 4px #000000;">
         <p class="m-0">SERVICE</p>
@@ -57,12 +72,12 @@
         </div>
         @if(!Auth::check() || Auth::user()->user_role == 'Member')
         <div class="d-flex justify-content-evenly" style="width: 700px">
-            <a class="btn btn-dark fw-bold" style="background-color: #008BD9; margin-top:10px; text-color: white" href="/hired/{{$jobView->id}}" role="button">Hire Now</a>
+            <a class="btn btn-primary border border-dark" style="background-color: #008BD9; margin-top:10px; text-color: white" href="/hired/{{$jobView->id}}" role="button">Hire Now</a>
         </div>
         @elseif (Auth::user()->user_role == 'Admin')
         <div class="w-75 d-flex justify-content-evenly">
-            <a class="btn btn-dark fw-bold" style="background-color: #008BD9; margin-top:10px; text-color: white" href="/edit/{{$jobView->id}}" role="button">Update</a>
-            <a class="btn btn-dark fw-bold" style="background-color: #FF4343; margin-top:10px; text-color: white" href="/destroy/{{$jobView->id}}" role="button">Delete</a>
+            <a class="btn btn-primary border border-dark" style="background-color: #008BD9; margin-top:10px; text-color: white" href="/edit/{{$jobView->id}}" role="button">Update</a>
+            <a class="btn btn-dark border border-dark" style="background-color: #FF4343; margin-top:10px; text-color: white" href="/destroy/{{$jobView->id}}" role="button">Delete</a>
         </div>
         @endif
     </div>

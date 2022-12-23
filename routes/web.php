@@ -40,10 +40,11 @@ Route::get('/categories', function(){
 // Route::get('/loginForm',function(){
 //     return view('main.login');
 // });
+Route::get('jobDecline/{id}', [JobController::class,'decline'])->name('decline');
 
-Route::get('/approve', function(){
-    return view('main.approve');
-});
+Route::get('/jobApproved/{id}', [JobController::class,'approve'])->name('approve');
+
+Route::get('/approve', [JobController::class,'jobList']);
 
 Route::get('/request', [JobController::class,'index_request'])->name('index_request');
 

@@ -117,12 +117,12 @@ class JobController extends Controller
 
     public function request(Request $request){
         $request->validate([
+            'job_image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'name' => 'required',
             'description' => 'required',
             'price' => 'required',
             'teamCount' => 'required',
             'category' => 'required',
-            'jobImage' => 'required',
             'terms' => 'required'
         ]);
         $newJob = new Job();
@@ -132,10 +132,30 @@ class JobController extends Controller
         $newJob->job_description = $request->input('description');
         $newJob->job_price = $request->input('price');
         $newJob->job_teamCount = $request->input('teamCount');
-        $newJob->job_image = $request->input('jobImage');
+        $images = $request->job_image->getClientOriginalName();
+        $file = request('job_image')->move('asset', $images);
+        $newJob->job_image = $file;
         $newJob->job_status = 'unapproved';
         $newJob->save();
 
         return redirect('/');
+    }
+
+    public function jobList(){
+        $jobs = Job::where('job_status', 'LIKE', 'unapproved')->get();
+        return view('main.approve',compact('jobs'));
+    }
+
+    public function approve($id){
+        $job = Job::find($id);
+        $job->job_status = 'unoccupied';
+        $job->save();
+        return redirect()->back();
+    }
+
+    public function decline($id){
+        Job::where('id', '=' , $id)->delete();
+
+        return redirect()->back();
     }
 }

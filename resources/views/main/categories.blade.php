@@ -3,6 +3,15 @@
 @section('title', 'Categories')
 @section('nav_categories', 'Nav')
 
+<style>
+
+.btn-light:hover{
+    background-color: #0d6efd !important;
+    color: white !important;
+}
+
+</style>
+
 @section('content')
 @if (!Auth::check())
 <div class="d-flex align-items-center justify-content-evenly w-100">
@@ -64,27 +73,29 @@
 @endif
 <div class="bg" style="background-image: linear-gradient(135deg, #C479FF, white, #59FFAF); width: 100%; height: auto;">
     <div class="container p-3">
-        @foreach ($categoryData->job as $job)
-        @if ($job->job_status == 'unoccupied')
-        <div class="card" style="width: 18rem;">
-            <img src="/{{$job->job_image}}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <div class="d-flex flex-column">
-                    <h5 class="card-title fw-bold">{{$job->job_name}}</h5>
-                    <p class="card-text">${{$job->job_price}}</p>
+        <div class="d-flex">
+            @foreach ($categoryData->job as $job)
+            @if ($job->job_status == 'unoccupied')
+            <div class="card m-3" style="width: 18rem;">
+                <img src="/{{$job->job_image}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <div class="d-flex flex-column">
+                        <h5 class="card-title fw-bold">{{$job->job_name}}</h5>
+                        <p class="card-text">${{$job->job_price}}</p>
 
-                    <div class= "d-flex align-items-center justify-content-between">
-                        <div class="">
-                            <p class="m-0 fw-bold">Team Handler</p>
-                            <p class="m-0 fw-bold fst-italic" style="color: #777777">{{$job->user->user_name}}</p>
+                        <div class= "d-flex align-items-center justify-content-between">
+                            <div class="">
+                                <p class="m-0 fw-bold">Team Handler</p>
+                                <p class="m-0 fw-bold fst-italic" style="color: #777777">{{$job->user->user_name}}</p>
+                            </div>
+                            <a href="/view/{{$job->id}}" class="btn btn-light border border-primary" style="text-color: black; padding: 5px 25px" >View</a>
                         </div>
-                        <a href="/view/{{$job->id}}" class="btn btn-white border border-primary fw-bold" style="text-color: black; padding: 5px 25px" >View</a>
                     </div>
                 </div>
             </div>
+            @endif
+            @endforeach
         </div>
-        @endif
-        @endforeach
     </div>
 </div>
 @endsection
