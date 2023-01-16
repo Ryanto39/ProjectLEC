@@ -23,7 +23,7 @@
 </div>
 <div class="d-flex" style="padding: 0 20px 50px 35px">
     <div class="">
-        <img class="border border-primary p-1 rounded" style="width: 550px" src="/{{$jobView->job_image}}" alt="">
+        <img class="border border-primary p-1 rounded" style="width: 550px" src="/asset/{{$jobView->job_image}}" alt="">
     </div>
     <div class="d-flex flex-column ms-3">
         <div class="d-flex align-items-center"style=" height: 35px">
@@ -39,22 +39,14 @@
         <div class="fst-italic fw-bold" style="margin-top: 10px; margin-right:20px; border-bottom: 2px solid black">
             <h3>${{$jobView->job_price}}</h3>
         </div>
-        <div class="d-flex align-items-center">
-            <img class="teamhandler fst-italic fw-bold m-0" src="/asset/TeamHandler.png" style="margin-top:10px; width:40px; height:40px" alt="">
-            <h5 class="m-0 ms-2">Team Handler</h5> <hr style="color:#000000; width: 80px; margin: 0 20px"> <h5 class="fw-bold fst-italic m-0" style="color: #777777; text-shadow: 1px 2px 5px #777777;">Jorytang Dafi Team</h5>
-        </div>
         <div class="border border-primary p-1 rounded border border-3" style="width: 700px">
             <div class="d-flex align-items-center">
                 <img class="teamhandler fst-italic fw-bold m-0" src="/asset/TeamLeader.png" style="margin-top:10px; width:20px; height:auto" alt="">
                 <h5 class="m-0 ms-2">Team Leader</h5> <hr style="color:#000000; width: 80px; margin: 0 20px"> <h5 class="fw-bold fst-italic m-0" style="color: #777777; text-shadow: 1px 2px 5px #777777;">{{$jobView->user->user_name}}</h5>
             </div>
             <div class="d-flex align-items-center">
-                <img class="teamhandler fst-italic fw-bold m-0" src="/asset/Achievements.png" style="margin-top:10px; width:20px; height:auto" alt="">
-                <h5 class="m-0 ms-2">Achievements</h5> <hr style="color:#000000; width: 80px; margin: 0 20px"> <h5 class="fw-bold fst-italic m-0" style="color: #777777; text-shadow: 1px 2px 5px #777777;">Tokopedia Lead Web Developer (2015-2022), Xiaomi Senior Web Developer (2010-2015)</h5>
-            </div>
-            <div class="d-flex align-items-center">
                 <img class="teamhandler fst-italic fw-bold m-0" src="/asset/TeamCounts.png" style="margin-top:10px; width:20px; height:auto" alt="">
-                <h5 class="m-0 ms-2">Team Counts</h5> <hr style="color:#000000; width: 80px; margin: 0 20px"> <h5 class="fw-bold fst-italic m-0" style="color: #777777; text-shadow: 1px 2px 5px #777777;">6</h5>
+                <h5 class="m-0 ms-2">Team Counts</h5> <hr style="color:#000000; width: 80px; margin: 0 20px"> <h5 class="fw-bold fst-italic m-0" style="color: #777777; text-shadow: 1px 2px 5px #777777;">{{$jobView->job_teamCount}}</h5>
             </div>
         </div>
         <div class="w-75 d-flex justify-content-evenly">

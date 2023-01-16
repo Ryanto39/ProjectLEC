@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
             'user_name' => 'Daniel',
             'email' => 'daniel@email.com',
             'password' => Hash::make('danielasd'),
-            'user_role' => 'Tank'
+            'user_role' => 'Member'
         ]);
         User::insert([
             'user_name' => 'Ryan',
@@ -37,13 +37,13 @@ class UserSeeder extends Seeder
             'user_name' => 'Rafi',
             'email' => 'rafi@email.com',
             'password' => Hash::make('rafiasdasd'),
-            'user_role' => 'Mage'
+            'user_role' => 'Member'
         ]);
         User::insert([
             'user_name' => 'Bintang',
             'email' => 'bintang@email.com',
             'password' => ('bintangasd'),
-            'user_role' => 'Roam'
+            'user_role' => 'Member'
         ]);
     }
 }

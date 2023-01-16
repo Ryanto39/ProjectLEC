@@ -62,34 +62,7 @@ class JobController extends Controller
             $updateData['job_image'] = $file;
         }
         $job->update($updateData);
-        // if ($request->hasFile('job_image')) {
-            // $image = $request->file('job_image');
-            // $image->storeAs('public/asset', $image->hashName());
-            // Storage::delete('public/asset/'.$job->image);
-            // $job->job_name = $request->job_name;
-            // $job->job_description = $request->job_description;
-            // $job->job_price = $request->job_price;
-            // $job->job_image = $request->job_image;
-            // $job->save();
-        //     $job->update([
-        //         'job_image' => $request->job_image,
-        //         'job_name' => $request->job_name,
-        //         'job_description' => $request->job_description,
-        //         'job_price' => $request->job_price
-        //     ]);
-        // }
-
-        // else {
-        //     $job->update([
-        //         'job_name' => $request->job_name,
-        //         'job_description' => $request->job_description,
-        //         'job_price' => $request->job_price
-        //     ]);
-        // }
-        // return redirect()->route('/view/');
         return redirect('view/'.$id);
-
-        // return view("main.home");
     }
 
     /**
@@ -109,6 +82,13 @@ class JobController extends Controller
         $job->job_status = 'occupied';
         $job->save();
         return view('main.hired');
+    }
+
+    public function unoccupy($id){
+        $job = Job::find($id);
+        $job->job_status = 'unoccupied';
+        $job->save();
+        return redirect()->back();
     }
 
     public function index_request(){
@@ -134,7 +114,7 @@ class JobController extends Controller
         $newJob->job_teamCount = $request->input('teamCount');
         $images = $request->job_image->getClientOriginalName();
         $file = request('job_image')->move('asset', $images);
-        $newJob->job_image = $file;
+        $newJob->job_image = $images;
         $newJob->job_status = 'unapproved';
         $newJob->save();
 
@@ -143,7 +123,8 @@ class JobController extends Controller
 
     public function jobList(){
         $jobs = Job::where('job_status', 'LIKE', 'unapproved')->get();
-        return view('main.approve',compact('jobs'));
+        $occupiedJobs = Job::where('job_status', 'LIKE', 'occupied')->get();
+        return view('main.approve',compact('jobs', 'occupiedJobs'));
     }
 
     public function approve($id){
@@ -158,4 +139,5 @@ class JobController extends Controller
 
         return redirect()->back();
     }
+
 }

@@ -73,27 +73,29 @@
 @endif
 <div class="bg" style="background-image: linear-gradient(135deg, #C479FF, white, #59FFAF); width: 100%; height: auto;">
     <div class="container p-3">
-        <div class="d-flex">
+        <div class="row row-cols-4">
             @foreach ($categoryData->job as $job)
-            @if ($job->job_status == 'unoccupied')
-            <div class="card m-3" style="width: 18rem;">
-                <img src="/{{$job->job_image}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <div class="d-flex flex-column">
-                        <h5 class="card-title fw-bold">{{$job->job_name}}</h5>
-                        <p class="card-text">${{$job->job_price}}</p>
+            <div class="col">
+                @if ($job->job_status == 'unoccupied')
+                <div class="card m-3" style="width: 18rem;">
+                    <img src="/asset/{{$job->job_image}}" class="card-img-top" style="max-height: 200px" alt="...">
+                    <div class="card-body">
+                        <div class="d-flex flex-column">
+                            <h5 class="card-title fw-bold">{{$job->job_name}}</h5>
+                            <p class="card-text">${{$job->job_price}}</p>
 
-                        <div class= "d-flex align-items-center justify-content-between">
-                            <div class="">
-                                <p class="m-0 fw-bold">Team Handler</p>
-                                <p class="m-0 fw-bold fst-italic" style="color: #777777">{{$job->user->user_name}}</p>
+                            <div class= "d-flex align-items-center justify-content-between">
+                                <div class="">
+                                    <p class="m-0 fw-bold">Team Handler</p>
+                                    <p class="m-0 fw-bold fst-italic" style="color: #777777">{{$job->user->user_name}}</p>
+                                </div>
+                                <a href="/view/{{$job->id}}" class="btn btn-light border border-primary" style="text-color: black; padding: 5px 25px" >View</a>
                             </div>
-                            <a href="/view/{{$job->id}}" class="btn btn-light border border-primary" style="text-color: black; padding: 5px 25px" >View</a>
                         </div>
                     </div>
                 </div>
+                @endif
             </div>
-            @endif
             @endforeach
         </div>
     </div>
