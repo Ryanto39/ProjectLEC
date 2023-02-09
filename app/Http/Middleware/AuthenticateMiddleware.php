@@ -20,12 +20,6 @@ class AuthenticateMiddleware
         if(Auth::check()){
             return redirect()->route('/');
         }
-        // if(Auth::user()->user_role == 'Admin'){
-        //     return redirect()->route('jobAdmin');
-        // }
-        // else{
-        //     return redirect()->route('jobUser');
-        // }
         return $next($request);
     }
 }

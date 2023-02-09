@@ -21,26 +21,10 @@ Route::get('/', function () {
     return view('main.home');
 })->name('/');
 
-
-// Route::get('/about', function(){
-//     return view('main.aboutus');
-// });
-
 Route::get('/categories', function(){
     return view('main.categories');
 });
 
-// Route::get('/jobUser', function(){
-//     return view('main.jobUser');
-// })->name('jobUser');
-
-// Route::get('/jobAdmin', function(){
-//     return view('main.jobAdmin');
-// })->name('jobAdmin');
-
-// Route::get('/loginForm',function(){
-//     return view('main.login');
-// });
 Route::get('jobDecline/{id}', [JobController::class,'decline'])->name('decline')->middleware('adminMiddleware');
 
 Route::get('/jobApproved/{id}', [JobController::class,'approve'])->name('approve')->middleware('adminMiddleware');

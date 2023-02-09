@@ -75,8 +75,8 @@
     <div class="container p-3">
         <div class="row row-cols-4">
             @foreach ($categoryData->job as $job)
+            @if ($job->job_status == 'unoccupied')
             <div class="col">
-                @if ($job->job_status == 'unoccupied')
                 <div class="card m-3" style="width: 18rem;">
                     <img src="/asset/{{$job->job_image}}" class="card-img-top" style="max-height: 200px" alt="...">
                     <div class="card-body">
@@ -94,8 +94,8 @@
                         </div>
                     </div>
                 </div>
-                @endif
             </div>
+            @endif
             @endforeach
         </div>
     </div>

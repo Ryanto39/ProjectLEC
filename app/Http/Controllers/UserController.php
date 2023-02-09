@@ -16,8 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        // $userData = User::all();
-        // return view('main/user', ['userData' => $userData]);
+
     }
 
     public function login(Request $request){
@@ -25,15 +24,10 @@ class UserController extends Controller
             'email' => 'required|email',
             'password' => 'required|min:8|max:20'
         ]);
-        // $email = $request->input('email');
-        // $password = $request->input('password');
+
         if(!Auth::attempt($credential)){
             return redirect()->back()->withErrors('Invalid Credential!');
         }
-
-        // if(!Auth::attempt(['user_email' => $email, 'user_password' => $password])){
-        //     return redirect()->back()->withErrors('Invalid Credential!');
-        // }
 
         return redirect()->route('/');
     }
